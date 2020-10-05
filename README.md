@@ -1,2 +1,4 @@
-# shift-remote-demo-spring
-Shift Remote Demo Spring Service
+shift-remote-demo-spring
+========================
+
+Shift Remote Demo Spring Service.
