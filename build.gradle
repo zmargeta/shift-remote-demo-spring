@@ -1,8 +1,8 @@
 plugins {
+    id 'java'
     id 'org.springframework.boot' version '2.3.4.RELEASE'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-    id 'com.google.cloud.tools.jib' version '2.5.0'
-    id 'java'
+    id 'com.google.cloud.tools.jib' version '2.5.1'
 }
 
 group = 'hr.margeta.code.shiftremotedemo'
@@ -12,6 +12,7 @@ sourceCompatibility = JavaVersion.VERSION_14
 tasks.withType(JavaCompile) {
     options.compilerArgs += '--enable-preview'
 }
+
 tasks.withType(Test) {
     jvmArgs += "--enable-preview"
 }
@@ -31,4 +32,18 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jib {
+    from {
+        image = 'adoptopenjdk/openjdk14-openj9@sha256:3d8a342604fb5a13040d246c3ae0b2208ada29fc1ef0714d1aaf0f65c690b7e7'
+    }
+    to {
+        image = 'zmargeta/shift-remote-demo-spring:latest'
+    }
+    container {
+        mainClass = "hr.margeta.code.shiftremotedemo.ServiceRoot"
+        ports = ['8080']
+        jvmFlags = ['--enable-preview']
+    }
 }
