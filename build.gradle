@@ -30,6 +30,11 @@ dependencies {
     testImplementation 'io.projectreactor:reactor-test'
 }
 
+bootJar {
+    archiveBaseName.set 'shift-remote-demo-spring'
+    archiveClassifier.set 'boot'
+}
+
 test {
     useJUnitPlatform()
 }
