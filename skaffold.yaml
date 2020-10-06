@@ -1,0 +1,17 @@
+apiVersion: skaffold/v1beta15
+kind: Config
+metadata:
+  name: shift-remote-demo-spring
+build:
+  artifacts:
+  - image: zmargeta/shift-remote-demo-spring
+    jib: {}
+deploy:
+  kubectl:
+    manifests:
+    - src/main/k8/*
+portForward:
+- resourceType: service
+  resourceName: shift-remote-demo-spring-service
+  port: 8080
+  localPort: 8080

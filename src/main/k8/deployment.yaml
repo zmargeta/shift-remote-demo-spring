@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shift-remote-demo-spring-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shift-remote-demo-spring
+  template:
+    metadata:
+      labels:
+        app: shift-remote-demo-spring
+    spec:
+      containers:
+      - name: shift-remote-demo-spring-pod
+        image: zmargeta/shift-remote-demo-spring
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shift-remote-demo-spring-service
+spec:
+  ports:
+  - protocol: TCP
+    port: 8080
+  selector:
+    app: shift-remote-demo-spring
