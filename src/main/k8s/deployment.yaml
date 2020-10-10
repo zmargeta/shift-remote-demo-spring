@@ -1,7 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: shift-remote-demo-spring-deployment
+  name: shift-remote-demo-spring-dep
+  labels:
+    app: shift-remote-demo-spring
 spec:
   replicas: 1
   selector:
@@ -23,10 +25,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: shift-remote-demo-spring-service
+  name: shift-remote-demo-spring-svc
+  labels:
+    app: shift-remote-demo-spring
 spec:
   ports:
-  - protocol: TCP
-    port: 8080
+  - port: 8080
+    targetPort: "http"
   selector:
     app: shift-remote-demo-spring
