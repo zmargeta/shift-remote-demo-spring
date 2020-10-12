@@ -1,3 +1,9 @@
 spring:
   main:
     banner-mode: off
+management:
+  endpoints:
+    web:
+      base-path: /system
+      exposure:
+        include: health, metrics, env

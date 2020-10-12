@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.3.4.RELEASE'
-    id 'com.google.cloud.tools.jib' version '2.5.1'
+    id 'com.google.cloud.tools.jib' version '2.6.0'
 }
 
 group = 'hr.margeta.code.shiftremotedemo'
@@ -24,6 +24,7 @@ repositories {
 dependencies {
     implementation platform("org.springframework.boot:spring-boot-dependencies:2.3.4.RELEASE")
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
