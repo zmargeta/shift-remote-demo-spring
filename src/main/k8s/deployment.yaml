@@ -13,9 +13,8 @@ spec:
         app: shift-remote-demo-spring
     spec:
       containers:
-      - name: shift-remote-demo-spring-pod
-        image: zmargeta/shift-remote-demo-spring
-        imagePullPolicy: IfNotPresent
+      - name: shift-remote-demo-spring
+        image: zmargeta/shift-remote-demo-spring:latest
         ports:
         - name: http
           containerPort: 8080
